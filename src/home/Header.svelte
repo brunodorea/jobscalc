@@ -15,7 +15,7 @@
     function goToProject() {
         $app.currentProject = new Project('', 1, 1)
         $app.page = 'project'
-        navigate('/project')
+        navigate('/project/new')
     }
 </script>
 
@@ -80,7 +80,7 @@
                 class="button orange uppercase flex gap-4 bg-orange-400 h-fit px-3 py-2 rounded items-center hover:brightness-110 transition-all"
             >
                 <span class="bg-opacity-10 bg-white rounded p-0.5">
-                    <img src="/images/plus-24.svg" alt="Novo Job" />
+                    <img src="/images/plus-24.svg" alt="Novo projeto" />
                 </span>
                 <p class="px-2 text-xs font-bold">Novo projeto</p>
             </button>

@@ -14,7 +14,7 @@
 
 <main>
     <h2 class="text-3xl font-medium text-gray-600 border-b pb-4 mb-4">
-        {isEditing ? 'Editar Job' : 'Dados do projeto'}
+        {isEditing ? 'Editar projeto' : 'Dados do projeto'}
     </h2>
 
     <form on:submit|preventDefault={() => dispatch('save')} class="space-y-6">
@@ -38,7 +38,7 @@
         <div class="flex gap-4">
             <div class="grid gap-2 flex-1">
                 <label for="daily-hours" class="text-gray-500 font-medium text-sm">
-                    Quantas horas por dia vai dedicar ao job?
+                    Quantas horas por dia vai dedicar ao projeto?
                 </label>
                 <input
                     class="px-4 py-2 border rounded-sm text-sm {errors.dailyHours ? 'border-red-500 focus:outline-red-500' : 'border-gray-300'}"
@@ -57,7 +57,7 @@
 
             <div class="grid gap-2 flex-1">
                 <label for="total-hours" class="text-gray-500 font-medium text-sm">
-                    Estimativa de horas para esse Job?
+                    Estimativa de horas para esse projeto?
                 </label>
                 <input
                     class="px-4 py-2 border rounded-sm text-sm {errors.totalHours ? 'border-red-500 focus:outline-red-500' : 'border-gray-300'}"
@@ -96,10 +96,10 @@
                     type="button"
                     on:click={() => dispatch('delete')}
                     class="flex items-center gap-2 border border-gray-300 hover:border-red-400 hover:bg-red-50 px-3 py-2 rounded transition-all text-gray-600 hover:text-red-600 text-xs font-semibold"
-                    title="Excluir Job"
+                    title="Excluir projeto"
                 >
                     <img src="/images/trash-24.svg" alt="Excluir" class="w-4 h-4" />
-                    <span>Excluir Job</span>
+                    <span>Excluir projeto</span>
                 </button>
             {/if}
         </div>

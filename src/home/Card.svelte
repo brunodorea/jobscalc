@@ -9,7 +9,7 @@
 
     $: projectValue = new Calculate($app, project).formattedProjectValue
 
-    function goToProject() {
+    function goToDetails() {
         $app.currentProject = new Project(
             project.name,
             project.dailyHours,
@@ -17,8 +17,18 @@
             project.id,
             project.createdAt
         )
-        $app.page = "project"
         navigate(`/project/${project.id}`)
+    }
+
+    function goToEdit() {
+        $app.currentProject = new Project(
+            project.name,
+            project.dailyHours,
+            project.totalHours,
+            project.id,
+            project.createdAt
+        )
+        navigate(`/project/${project.id}/edit`)
     }
 
     function handleDelete() {
@@ -34,7 +44,7 @@
     <div class="name column text-2xl text-gray-700 font-bold">
         <button
             type="button"
-            on:click={goToProject}
+            on:click={goToDetails}
             class="text-left hover:text-orange-500 transition-colors focus:outline-none"
             title="Visualizar informações do projeto"
         >
@@ -68,18 +78,18 @@
     <div class="actions column flex gap-2">
         <p class="sr-only">Ações</p>
         <button 
-            on:click={goToProject}
+            on:click={goToEdit}
             class="border border-gray-200 p-2 rounded hover:bg-gray-100 transition-all"
-            title="Editar Job"
+            title="Editar projeto"
         >
-            <img src="/images/edit-24.svg" alt="Editar Job" class="w-4" />
+            <img src="/images/edit-24.svg" alt="Editar projeto" class="w-4" />
         </button>
         <button
             on:click={handleDelete}
             class="border border-gray-200 p-2 rounded hover:bg-red-100 transition-all"
-            title="Excluir Job"
+            title="Excluir projeto"
         >
-            <img src="/images/trash-24.svg" alt="Excluir Job" class="w-4" />
+            <img src="/images/trash-24.svg" alt="Excluir projeto" class="w-4" />
         </button>
     </div>
 </div>

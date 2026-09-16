@@ -50,7 +50,7 @@
             }
         }
 
-        // Novo Job (/project)
+        // Novo projeto (/project/new)
         isEditing = false
         projectFound = true
         name = ''
@@ -68,7 +68,7 @@
 
     $: tempProject = new Project(name, Number(dailyHours) || 0, Number(totalHours) || 0, currentId, createdAt)
     $: projectValue = new Calculate($app, tempProject).formattedProjectValue
-    $: pageTitle = !projectFound ? "Job não encontrado" : (isEditing ? "Editar Job" : "Novo Job")
+    $: pageTitle = !projectFound ? "Projeto não encontrado" : (isEditing ? "Editar projeto" : "Novo projeto")
 
     function validate() {
         errors = { name: '', dailyHours: '', totalHours: '' }
@@ -116,12 +116,16 @@
         }
 
         $app.page = 'home'
-        navigate('/')
+        navigate(`/project/${currentId}`)
     }
 
     function handleCancel() {
         $app.page = 'home'
-        navigate('/')
+        if (isEditing) {
+            navigate(`/project/${currentId}`)
+        } else {
+            navigate('/')
+        }
     }
 
     function handleDelete() {
