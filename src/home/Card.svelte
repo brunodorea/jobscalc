@@ -2,6 +2,7 @@
     import { Calculate } from "../scripts/calculate"
     import { Project } from "../scripts/projects"
     import { app } from "../store"
+    import { navigate } from "svelte-routing"
 
     /** @type {Project} */
     export let project
@@ -17,6 +18,7 @@
             project.createdAt
         )
         $app.page = "project"
+        navigate(`/project/${project.id}`)
     }
 
     function handleDelete() {
@@ -30,7 +32,14 @@
     class={`bg-white border border-gray-200 grid grid-cols-[35%_20%_15%_20%_10%] items-center px-8 py-6 rounded  hover:bg-gradient-to-l hover:from-transparent hover:to-orange-50 overflow-hidden relative before:absolute before:top-0 before:left-0 before:w-1 before:h-0 before:transition-all before:bg-orange-400 hover:before:h-full`}
 >
     <div class="name column text-2xl text-gray-700 font-bold">
-        {project.name}
+        <button
+            type="button"
+            on:click={goToProject}
+            class="text-left hover:text-orange-500 transition-colors focus:outline-none"
+            title="Visualizar informações do projeto"
+        >
+            {project.name}
+        </button>
     </div>
     <div class="deadline column grid">
         <span class="font-bold text-gray-400 uppercase text-xs">Prazo</span>

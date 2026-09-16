@@ -1,10 +1,12 @@
 <script>
     import { app } from '../store.js'
+    import { navigate } from 'svelte-routing'
 
     /** @type {string} */
     export let title = ''
     function goToHome() {
         $app.page = 'home'
+        navigate('/')
     }
 </script>
 

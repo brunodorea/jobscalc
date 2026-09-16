@@ -2,7 +2,9 @@
     import { createEventDispatcher } from 'svelte'
 
     export let name = ''
+    /** @type {number|string} */
     export let dailyHours = 1
+    /** @type {number|string} */
     export let totalHours = 1
     export let errors = { name: '', dailyHours: '', totalHours: '' }
     export let isEditing = false

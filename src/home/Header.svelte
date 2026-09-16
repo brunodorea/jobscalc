@@ -2,17 +2,20 @@
     import { Calculate } from "../scripts/calculate.js"
     import { Project } from "../scripts/projects.js"
     import { app } from "../store.js"
+    import { navigate } from "svelte-routing"
 
     $: freeHours = new Calculate($app).freeHours
     $: statusCount = new Calculate($app).projectsStatus
 
     function goToProfile() {
         $app.page = 'profile'
+        navigate('/profile')
     }
 
     function goToProject() {
         $app.currentProject = new Project('', 1, 1)
         $app.page = 'project'
+        navigate('/project')
     }
 </script>
 
@@ -23,7 +26,9 @@
             class="animate-up flex justify-between items-center border-b border-b-gray-500 pb-8"
         >
             <h2 class="sr-only">Homepage</h2>
-            <img id="logo" src="/images/logo.svg" alt="Logo" />
+            <a href="/" on:click|preventDefault={() => navigate('/')} title="JobsCalc - Início">
+                <img id="logo" src="/images/logo.svg" alt="Logo" />
+            </a>
             <span id="notification" class="flex gap-2">
                 <img src="/images/alert-octagon.svg" alt="Alerta" />
                 {#if freeHours <= 0}

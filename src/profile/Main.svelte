@@ -2,6 +2,7 @@
     import Aside from "../parts/Aside.svelte"
     import { app } from '../store.js'
     import { Calculate } from '../scripts/calculate.js'
+    import { navigate } from 'svelte-routing'
 
     let name = $app.user?.name || ''
     let avatar = $app.user?.avatar || ''
@@ -81,10 +82,12 @@
         }
 
         $app.page = 'home'
+        navigate('/')
     }
 
     function handleCancel() {
         $app.page = 'home'
+        navigate('/')
     }
 </script>
 
